@@ -1,0 +1,245 @@
+# ============================================================
+#                    ABBITECH KITTY SETUP
+# ============================================================
+
+# ------------------------------------------------------------
+# FONT
+# ------------------------------------------------------------
+
+font_family JetBrainsMono Nerd Font
+font_size 12.5
+
+bold_font auto
+italic_font auto
+bold_italic_font auto
+
+disable_ligatures never
+
+
+# ------------------------------------------------------------
+# CURSOR
+# ------------------------------------------------------------
+
+cursor_shape beam
+cursor_blink_interval 0.5 ease-in-out
+cursor_stop_blinking_after 10
+
+# Cursor trail = petit effet animé quand le curseur bouge
+cursor_trail 70
+cursor_trail_decay 0.1 0.35
+cursor_trail_start_threshold 2
+
+
+# ------------------------------------------------------------
+# WINDOW / LOOK
+# ------------------------------------------------------------
+
+window_padding_width 10
+window_margin_width 2
+
+placement_strategy center
+
+window_border_width 1.5
+draw_minimal_borders no
+
+active_border_color #89b4fa
+inactive_border_color #313244
+
+inactive_text_alpha 0.88
+
+# Enlève la grosse barre de titre
+hide_window_decorations titlebar-only
+
+
+# ------------------------------------------------------------
+# TRANSPARENCY / BLUR
+# ------------------------------------------------------------
+
+background_opacity 0.91
+dynamic_background_opacity yes
+
+# Fonctionne sous Wayland si le compositor supporte le blur
+background_blur 32
+
+
+# ------------------------------------------------------------
+# SCROLLBACK
+# ------------------------------------------------------------
+
+scrollback_lines 10000
+scrollbar scrolled
+
+mouse_hide_wait 2.0
+
+
+# ------------------------------------------------------------
+# LINKS
+# ------------------------------------------------------------
+
+allow_hyperlinks yes
+underline_hyperlinks hover
+url_style curly
+
+
+# ------------------------------------------------------------
+# CLIPBOARD
+# ------------------------------------------------------------
+
+# Sélection souris = copie directe
+copy_on_select clipboard
+
+strip_trailing_spaces smart
+
+
+# ------------------------------------------------------------
+# SHELL INTEGRATION
+# ------------------------------------------------------------
+
+shell_integration enabled
+
+# Notification si une longue commande finit alors que
+# le terminal n'est plus visible
+notify_on_cmd_finish invisible 10
+
+
+# ------------------------------------------------------------
+# LAYOUTS
+# ------------------------------------------------------------
+
+# Splits + mode zoom
+enabled_layouts splits,stack
+
+
+# ------------------------------------------------------------
+# TAB BAR
+# ------------------------------------------------------------
+
+tab_bar_edge top
+tab_bar_style powerline
+tab_powerline_style round
+
+tab_bar_min_tabs 1
+tab_switch_strategy previous
+
+tab_title_max_length 30
+tab_title_template " {index}: {title} "
+
+active_tab_font_style bold
+inactive_tab_font_style normal
+
+tab_activity_symbol "●"
+
+
+# ------------------------------------------------------------
+# COLORS FOR TABS / BORDERS
+# ------------------------------------------------------------
+
+active_tab_foreground #11111b
+active_tab_background #89b4fa
+
+inactive_tab_foreground #cdd6f4
+inactive_tab_background #313244
+
+tab_bar_background #11111b
+
+
+# ------------------------------------------------------------
+# KEYBOARD
+# ------------------------------------------------------------
+
+map_timeout 1.0
+
+
+# ============================================================
+# SPLITS
+#
+# Ctrl+Shift+Space puis...
+#
+# v = split vertical
+# s = split horizontal
+# h/j/k/l = navigation
+# z = zoom pane
+# e = equaliser les panes
+# x = fermer pane
+# t = nouvel onglet
+# ============================================================
+
+map ctrl+shift+space>v launch --cwd=current --location=vsplit
+map ctrl+shift+space>s launch --cwd=current --location=hsplit
+
+map ctrl+shift+space>h neighboring_window left
+map ctrl+shift+space>j neighboring_window down
+map ctrl+shift+space>k neighboring_window up
+map ctrl+shift+space>l neighboring_window right
+
+map ctrl+shift+space>z toggle_layout stack
+
+map ctrl+shift+space>e layout_action equalize
+
+map ctrl+shift+space>x close_window
+
+map ctrl+shift+space>t new_tab_with_cwd
+
+
+# ------------------------------------------------------------
+# MOVE PANES
+#
+# Ctrl+Shift+Space puis Shift + H/J/K/L
+# ------------------------------------------------------------
+
+map ctrl+shift+space>shift+h move_window left
+map ctrl+shift+space>shift+j move_window down
+map ctrl+shift+space>shift+k move_window up
+map ctrl+shift+space>shift+l move_window right
+
+
+# ------------------------------------------------------------
+# RESIZE
+#
+# Ctrl+Alt + H/J/K/L
+# ------------------------------------------------------------
+
+map ctrl+alt+h resize_window narrower 3
+map ctrl+alt+l resize_window wider 3
+map ctrl+alt+k resize_window taller 2
+map ctrl+alt+j resize_window shorter 2
+
+
+# ------------------------------------------------------------
+# USEFUL SHORTCUTS
+# ------------------------------------------------------------
+
+# Nouvel onglet dans le dossier actuel
+map ctrl+shift+t new_tab_with_cwd
+
+# Nouveau pane automatique dans le dossier actuel
+map ctrl+shift+enter launch --cwd=current --location=split
+
+# Zoom/unzoom pane
+map ctrl+alt+z toggle_layout stack
+
+# Retour au pane utilisé juste avant
+map ctrl+alt+p nth_window -1
+
+# Equalize
+map ctrl+alt+e layout_action equalize
+
+
+# ------------------------------------------------------------
+# OPACITY CONTROL
+# ------------------------------------------------------------
+
+map ctrl+shift+a>m set_background_opacity +0.05
+map ctrl+shift+a>l set_background_opacity -0.05
+map ctrl+shift+a>1 set_background_opacity 1
+map ctrl+shift+a>d set_background_opacity default
+
+
+# ------------------------------------------------------------
+# KITTY
+# ------------------------------------------------------------
+
+map ctrl+shift+f2 edit_config_file
+map ctrl+shift+f3 command_palette
+map ctrl+shift+f5 load_config_file
+map ctrl+shift+f6 debug_config
